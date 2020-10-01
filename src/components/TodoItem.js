@@ -108,10 +108,8 @@ TodoItem.propTypes = {
     id: PropTypes.number.isRequired,
     completed: PropTypes.bool.isRequired,
   }).isRequired,
-  setUneditedTitles: PropTypes.func.isRequired,
+  setUneditedTitle: PropTypes.func.isRequired,
   setTodoList: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
-  uneditedTitles: PropTypes.shape(
-    PropTypes.string.isRequired,
-  ).isRequired,
+  uneditedTitle: PropTypes.string.isRequired,
 };

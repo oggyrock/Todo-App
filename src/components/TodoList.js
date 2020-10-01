@@ -34,6 +34,6 @@ TodoList.propTypes = {
     PropTypes.object.isRequired,
   ).isRequired,
   setTodoList: PropTypes.func.isRequired,
-  setUneditedTitles: PropTypes.func.isRequired,
-  uneditedTitles: PropTypes.shape().isRequired,
+  setUneditedTitle: PropTypes.func.isRequired,
+  uneditedTitle: PropTypes.string.isRequired,
 };
