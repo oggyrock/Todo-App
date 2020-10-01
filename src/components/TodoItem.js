@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export function TodoItem({
-  uneditedTitles,
-  setUneditedTitles,
+  uneditedTitle,
+  setUneditedTitle,
   todoList,
   setTodoList,
   todo,
@@ -13,10 +13,7 @@ export function TodoItem({
 
   const handleDoubleClick = (event) => {
     const clickedTodo = event.target;
-    setUneditedTitles({
-      ...uneditedTitles,
-      [todo.id]: todo.title,
-    });
+    setUneditedTitle(todo.title);
     clickedTodo.closest('li').className = 'editing';
     clickedTodo.closest('li').lastChild.focus();
   };
@@ -25,17 +22,17 @@ export function TodoItem({
     const switchedTodo = todo;
 
     switchedTodo.completed = !todo.completed;
-    setTodoList([...todoList]);
+    setTodoList([...list]);
   };
 
   const handleDestroy = () => {
-    todoList.splice(index, 1);
-    setTodoList([...todoList]);
+    list.splice(index, 1);
+    setTodoList([...list]);
   };
 
   const handleEdit = (event) => {
     list[index].title = event.target.value;
-    setTodoList([...todoList]);
+    setTodoList([...list]);
   };
 
   const handleKeyDown = (event) => {
@@ -43,17 +40,19 @@ export function TodoItem({
 
     if (event.key === 'Enter') {
       if (!event.target.value.trim()) {
-        todoList.splice(index, 1);
-        setTodoList([...todoList]);
+        list.splice(index, 1);
+        setTodoList([...list]);
       } else {
+        list[index].title = event.target.value.trim();
+        setTodoList([...list]);
         clickedTodo.closest('li').className
           = todo.completed ? 'completed' : '';
       }
     }
 
     if (event.key === 'Escape') {
-      list[index].title = uneditedTitles[todo.id];
-      setTodoList([...todoList]);
+      list[index].title = uneditedTitle;
+      setTodoList([...list]);
       clickedTodo.closest('li').className
         = todo.completed ? 'completed' : '';
     }
@@ -61,9 +60,11 @@ export function TodoItem({
 
   const handleBlur = ({ target }) => {
     if (!target.value.trim()) {
-      todoList.splice(index, 1);
-      setTodoList([...todoList]);
+      list.splice(index, 1);
+      setTodoList([...list]);
     } else {
+      list[index].title = target.value.trim();
+      setTodoList([...list]);
       target.closest('li').className
         = todo.completed ? 'completed' : '';
     }

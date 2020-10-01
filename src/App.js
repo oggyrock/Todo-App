@@ -4,7 +4,7 @@ import { TodosFilter } from './components/TodosFilter';
 
 function App() {
   const [title, setTitle] = useState('');
-  const [uneditedTitles, setUneditedTitles] = useState({});
+  const [uneditedTitle, setUneditedTitle] = useState('');
   const [toggleAll, setToggleAll] = useState(true);
   const filters = {
     all: 'All',
@@ -97,8 +97,8 @@ function App() {
         </label>
         <TodoList
           filteredList={filteredList}
-          setUneditedTitles={setUneditedTitles}
-          uneditedTitles={uneditedTitles}
+          setUneditedTitle={setUneditedTitle}
+          uneditedTitle={uneditedTitle}
           todoList={todoList}
           setTodoList={setTodoList}
         />

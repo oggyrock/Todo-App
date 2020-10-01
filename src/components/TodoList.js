@@ -4,8 +4,8 @@ import { TodoItem } from './TodoItem';
 
 export function TodoList({
   filteredList,
-  setUneditedTitles,
-  uneditedTitles,
+  setUneditedTitle,
+  uneditedTitle,
   todoList,
   setTodoList,
 }) {
@@ -14,8 +14,8 @@ export function TodoList({
       {filteredList.map((todo, index) => (
         <TodoItem
           key={todo.id}
-          uneditedTitles={uneditedTitles}
-          setUneditedTitles={setUneditedTitles}
+          uneditedTitle={uneditedTitle}
+          setUneditedTitle={setUneditedTitle}
           todoList={todoList}
           setTodoList={setTodoList}
           todo={todo}
